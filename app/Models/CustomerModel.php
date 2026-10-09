@@ -1,18 +1,19 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Models;
 
-use App\Models\CustomerModel;
+use CodeIgniter\Model;
 
-class Customers extends BaseController
+class CustomerModel extends Model
 {
-    public function index(): string
-    {
-        $customerModel = new CustomerModel();
-        $customers = $customerModel->findAll();
+    protected $table = 'customers';
+    protected $primaryKey = 'id';
+    protected $returnType = 'array';
 
-        return view('customers/index', [
-            'customers' => $customers
-        ]);
-    }
+    protected $allowedFields = [
+        'full_name',
+        'email',
+        'phone',
+        'created_at'
+    ];
 }
