@@ -5,6 +5,7 @@ RUN apt-get update && apt-get install -y \
     git \
     libicu-dev \
     libzip-dev \
+    libonig-dev \
     && docker-php-ext-install intl mbstring pdo_sqlite pdo_mysql zip \
     && a2enmod rewrite
 
