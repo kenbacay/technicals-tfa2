@@ -62,7 +62,7 @@ class Database extends Config
     //        'dateFormat'  => [
     //            'date'     => 'Y-m-d',
     //            'datetime' => 'Y-m-d H:i:s',
-    //            'time'      => 'H:i:s',
+    //            'time'     => 'H:i:s',
     //        ],
     //    ];
 
@@ -179,7 +179,7 @@ class Database extends Config
         'dateFormat'  => [
             'date'     => 'Y-m-d',
             'datetime' => 'Y-m-d H:i:s',
-            'time'     => 'H:i:s',
+            'time'      => 'H:i:s',
         ],
     ];
 
@@ -188,38 +188,33 @@ class Database extends Config
         parent::__construct();
 
         $this->default['hostname'] = env(
-            'database.default.hostname',
+            'DB_HOST',
             'localhost'
         );
 
         $this->default['username'] = env(
-            'database.default.username',
+            'DB_USER',
             ''
         );
 
         $this->default['password'] = env(
-            'database.default.password',
+            'DB_PASSWORD',
             ''
         );
 
         $this->default['database'] = env(
-            'database.default.database',
+            'DB_NAME',
             ''
         );
 
         $this->default['DBDriver'] = env(
-            'database.default.DBDriver',
+            'DB_DRIVER',
             'MySQLi'
         );
 
         $this->default['port'] = (int) env(
-            'database.default.port',
+            'DB_PORT',
             3306
-        );
-
-        $this->default['encrypt'] = filter_var(
-            env('database.default.encrypt', 'true'),
-            FILTER_VALIDATE_BOOLEAN
         );
 
         // Ensure that we always set the database group to 'tests' if
